@@ -11,6 +11,7 @@ public class Torus extends Shape implements ThreeDimensional, PiRequired, MassCa
         this.majorRadius = majorRadius;
         this.minorRadius = minorRadius;
 
+        setName("Donat dengan lubang");
         getVolume();
         getSurfaceArea();
         getMass();
@@ -33,7 +34,7 @@ public class Torus extends Shape implements ThreeDimensional, PiRequired, MassCa
     @Override
     public void printInfo(){
         System.out.println("=============================================");
-        System.out.println("Donat tanpa lubang");
+        System.out.println(getName());
         System.out.println("=============================================");
         System.out.println("Isikan Radius   : isi dengan " + this.majorRadius);
         System.out.println("Isikan radius   : isi dengan " + this.minorRadius);
@@ -46,9 +47,19 @@ public class Torus extends Shape implements ThreeDimensional, PiRequired, MassCa
     }
     @Override
     public double gramToKilogram(){
-        return getMass() / 1000;
+        return getMass() / DENOMINATOR;
     }
     public double calculateCost(){
         return PRICE_PER_KG * gramToKilogram();
+    }
+
+    @Override
+    public void setName(String inputName) {
+        super.setName(inputName);
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
     }
 }

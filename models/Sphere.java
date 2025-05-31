@@ -1,16 +1,14 @@
 package uap.models;
 
 import uap.bases.Shape;
-import uap.interfaces.MassCalculable;
-import uap.interfaces.PiRequired;
-import uap.interfaces.ShippingCostCalculator;
-import uap.interfaces.ThreeDimensional;
+import uap.interfaces.*;
 
-public class Sphere extends Shape implements ThreeDimensional, PiRequired, MassCalculable, ShippingCostCalculator {
+public class Sphere extends Shape implements ThreeDimensional, PiRequired, MassCalculable, ShippingCostCalculator, MassConverter {
     private double radius;
 
     public Sphere(double radius){
         this.radius = radius;
+        setName("Donat tanpa lubang");
         getVolume();
         getSurfaceArea();
         getMass();
@@ -33,7 +31,7 @@ public class Sphere extends Shape implements ThreeDimensional, PiRequired, MassC
     @Override
     public void printInfo(){
         System.out.println("=============================================");
-        System.out.println("Donat tanpa lubang");
+        System.out.println(getName());
         System.out.println("=============================================");
         System.out.println("Isikan radius   : isi dengan " + this.radius);
         System.out.println("=============================================");
@@ -45,9 +43,19 @@ public class Sphere extends Shape implements ThreeDimensional, PiRequired, MassC
         System.out.println("=============================================");
     }
     public double gramToKilogram(){
-        return getMass() / 1000;
+        return getMass() / DENOMINATOR;
     }
     public double calculateCost(){
         return PRICE_PER_KG * gramToKilogram();
+    }
+
+    @Override
+    public void setName(String inputName) {
+        super.setName(inputName);
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
     }
 }
